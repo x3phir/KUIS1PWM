@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harri Personal Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+            background-color: #fdfdfd;
+            color: black;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .red-circle {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ff5f57;
+        }
+
+        .yellow-circle {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ffbd2e;
+        }
+
+        .green-circle {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #28ca42;
+        }
+
+        .nav-tabs {
+            background-color: black;
+            display: flex;
+            padding: 12px 40px;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.5s;
+        }
+
+        .nav-logo {
+            position: absolute;
+            left: 20px;
+            color: white;
+            font-size: 23px;
+            font-weight: 600;
+            text-decoration: none;
+            font-style: italic;
+        }
+
+        .nav-tab {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav-tab:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            padding: 14rem 9rem 12rem 9rem;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 2rem;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: animasiFadeIn 1s 0.2s forwards;
+        }
+
+        .header-profile {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-logo img {
+            height: 300px;
+        }
+
+        .header-name {
+            font-size: 70px;
+            margin: 0;
+            padding: 0;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .header-name:not(:last-child) {
+            margin-bottom: 0.3em;
+        }
+
+
+        .header-profile p {
+            font-size: 25px;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .projects {
+            color: white;
+            background-color: #000000;
+            padding: 6rem 10rem;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: animasiFadeIn 1s 0.4s forwards;
+        }
+
+        .projects h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .project-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: flex-start;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+            max-width: 350px;
+            min-width: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            background: #111;
+            margin: 0;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: animasiFadeIn 1s 0.6s forwards;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .project-card img {
+            width: 100%;
+            max-width: 350px;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .project-card-content {
+            padding: 20px;
+        }
+
+        .project-card-content h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .project-card-content p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .project-card-button {
+            margin-top: 20px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .project-card-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .skills {
+            background-color: #fff;
+            padding: 6rem 10rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: animasiFadeIn 1s 0.8s forwards;
+        }
+
+        .skills h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .skill-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 50px;
+        }
+
+        .skill-card {
+            border: 1px solid #e5e5e5;
+            padding: 20px;
+            border-radius: 12px;
+            background: #fafafa;
+            transition: all 0.2s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-card img {
+            width: 48px;
+            height: 48px;
+        }
+
+        .skill-quotes {
+            display: flex;
+            justify-content: center;
+        }
+
+        .skill-quotes p {
+            width: 60%;
+            font-style: italic;
+            text-align: center;
+            color: #666;
+            font-size: 18px;
+        }
+
+        .contact {
+            background-color: black;
+            color: white;
+            padding: 6rem 10rem;
+            border-bottom: 5px solid black;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: animasiFadeIn 1s 1s forwards;
+        }
+
+        .contact h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-direction: row;
+            margin: 0px;
+            justify-content: end;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        @keyframes animasiFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 900px) {
+
+            header,
+            .projects,
+            .skills,
+            .contact {
+                padding: 4rem 2rem;
+            }
+
+            header {
+                padding-top: 8rem;
+            }
+
+            .project-grid {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-tabs {
+                flex-direction: row;
+                gap: 20px;
+                padding: 10px 20px;
+            }
+
+            .nav-logo {
+                display: none;
+            }
+
+            header {
+                flex-direction: column;
+                padding: 6rem 1rem 3rem 1rem;
+                gap: 1.5rem;
+            }
+
+            .header-name {
+                font-size: 2.5rem;
+            }
+
+            .header-profile p {
+                font-size: 1.1rem;
+            }
+
+            .header-logo img {
+                height: 200px;
+            }
+
+            .projects,
+            .skills,
+            .contact {
+                padding: 3rem 1rem;
+            }
+
+            .projects h2,
+            .skills h2,
+            .contact h2 {
+                display: flex;
+                justify-content: center;
+                font-size: 2.5rem;
+            }
+
+            .project-grid {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .project-card {
+                max-width: 100%;
+            }
+
+            .project-card img {
+                max-width: 100%;
+                height: 120px;
+            }
+
+            .skill-grid {
+                display: flex;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .skill-card img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .contact-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-container-profile h2 {
+                font-size: 2rem;
+            }
+
+            .contact-container-list {
+                font-size: 1rem;
+                text-align: center;
+            }
+
+            .skill-quotes p {
+                width: 95%;
+            }
+        }
+
+        .contact-container-image img {
+            width: 230px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-container-profile h2 {
+            font-size: 3rem;
+            font-weight: 600;
+        }
+
+        .contact-container-list {
+            font-size: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+
+        .contact-list-item {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: #181818;
+            color: #fff;
+            border-radius: 8px;
+            padding: 12px 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-list-item:hover {
+            background: #222;
+            transform: translateX(4px);
+        }
+
+        .contact-list-item img {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+
+        .contact-container-profile h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .contact-container-list {
+                font-size: 0.95rem;
+                gap: 0.7rem;
+            }
+
+            .contact-list-item {
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-tabs">
+        <span class="nav-logo">HS</span>
+        <a class="nav-tab" href="#home">Profile</a>
+        <a class="nav-tab" href="#projects">Projects</a>
+        <a class="nav-tab" href="#skills">Skills</a>
+        <a class="nav-tab" href="#contact">Contact</a>
+    </div>
+    <header id="home">
+        <div class="header-profile">
+            <h1 class="header-name">Hello.</h3>
+            <h1 class="header-name">I'm Harri.</h3>
+            <p>Web Developer and Web Pentester</p>
+        </div>
+        <div class="header-logo">
+            <img src="photo/profile.png" alt="">
+        </div>
+    </header>
+    <div class="projects" id="projects">
+        <h2>Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div class="red-circle"></div>
+                    <div class="yellow-circle"></div>
+                    <div class="green-circle"></div>
+                    <h3>2025-09-17-project.html</h3>
+                </div>
+                <img class="project-card-image" src="photo/WebCMS.png" alt="project-1">
+                <div class="project-card-content">
+                    <h2>Web CMS</h2>
+                    <p>I developed a Content Management System (CMS) that enables users to easily create, manage, and organize digital content. The CMS provides an intuitive interface for adding and editing posts, managing categories, and handling media files.</p>
+                    <div class="project-card-button">
+                        <div>
+                            <span>View Project</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-card-header">
+                    <div class="red-circle"></div>
+                    <div class="yellow-circle"></div>
+                    <div class="green-circle"></div>
+                    <h3>2025-08-18-project.html</h3>
+                </div>
+                <img class="project-card-image" src="photo/AdminDashboard.png" alt="project-1">
+                <div class="project-card-content">
+                    <h2>Admin Dashboard</h2>
+                    <p>I built a responsive Admin Dashboard designed for efficient data monitoring and management. The dashboard includes key features such as data visualization with charts, real-time statistics, and CRUD (Create, Read, Update, Delete) operations for managing users, products, or other resources.</p>
+                    <div class="project-card-button">
+                        <div>
+                            <span>View Project</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="skills" id="skills">
+        <h2>Skills</h2>
+        <div class="skill-grid">
+            <div class="skill-card">
+                <img src="photo/python.svg" alt="">
+            </div>
+            <div class="skill-card">
+                <img src="photo/c.svg" alt="">
+            </div>
+            <div class="skill-card">
+                <img src="photo/cplusplus.svg" alt="">
+            </div>
+            <div class="skill-card">
+                <img src="photo/javascript.svg" alt="">
+            </div>
+            <div class="skill-card">
+                <img src="photo/nodedotjs.svg" alt="">
+            </div>
+            <div class="skill-card">
+                <img src="photo/shadcnui.svg" alt="">
+            </div>
+            <div class="skill-card">
+                <img src="photo/daisyui.svg" alt="">
+            </div>
+            <div class="skill-card">
+                <img src="photo/tailwindcss.svg" alt="">
+            </div>
+            <div class="skill-card">
+                <img src="photo/php.svg" alt="">
+            </div>
+            <div class="skill-card">
+                <img src="photo/laravel.svg" alt="">
+            </div>
+            <div class="skill-card">
+                <img src="photo/figma.svg" alt="">
+            </div>
+        </div>
+        <div class="skill-quotes">
+            <p>"It's not about how many skills you have, but how deeply you can use one to make an impact."</p>
+        </div>
+    </div>
+    <div class="contact" id="contact">
+        <h2>Contact</h2>
+        <div class="contact-container">
+            <div class="contact-container-profile">
+                <h2>Harri Supriadi</h2>
+                <div class="contact-container-list">
+                    <div class="contact-list-item">
+                        <img src="photo/whatsapp.svg" alt="Phone" style="filter: invert(1) brightness(2);">
+                        <span>0838-9871-7632</span>
+                    </div>
+                    <div class="contact-list-item">
+                        <img src="photo/instagram.svg" alt="Instagram" onerror="this.style.display='none'" style="filter: invert(1) brightness(2);">
+                        <span>@harr.sprd</span>
+                    </div>
+                    <div class="contact-list-item">
+                        <img src="photo/github.svg" alt="Github" onerror="this.style.display='none'" style="filter: invert(1) brightness(2);">
+                        <span>xephir</span>
+                    </div>
+                    <div class="contact-list-item">
+                        <img src="photo/email.svg" alt="Email" onerror="this.style.display='none'" style="filter: invert(1) brightness(2);">
+                        <span>harri@email.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
