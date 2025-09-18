@@ -14,3 +14,5 @@ Website ini dirancang dengan gaya **minimalis, bersih, dan profesional**, untuk 
 - **Keterampilan** – Koleksi bahasa pemrograman, framework, dan tools yang saya gunakan:
   - Python, C, C++, JavaScript, Node.js, PHP, Laravel, Tailwind CSS, Figma, dll.
 - **Kontak** – Informasi untuk menghubungi saya melalui WhatsApp, Instagram, GitHub, dan Email.
+
+  ![Alt Text](photo/personal-web.png)
